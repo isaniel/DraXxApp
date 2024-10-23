@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles/front.css">
+    <script src="/socket.io/socket.io.js"></script> <!-- Include Socket.IO client library -->
+    <title>Single Chat</title>
+</head>
+<body>
+    <div class="main">
+        <div class="name">
+            <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
+            <h1 id="username-display">Chat</h1>
+        </div>
+        <div class="chat-messages">
+        <div class="message">
+        <p>
+            daniel
+        </p><span>9:10am</span>
+        <p class="text"> drax saber</p>
+    </div>
+    </div>
+        <form class="chat-form">
+        <div class="input">
+            <input type="text" class="msg messageInput" placeholder="...." id="messageInput" autocomplete="off" required>
+            <button class="btn" id="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.13.0/qs.min.js" integrity="sha512-LGi3LadLxI4NfDCsvTQ+Ps8dmV3PK7QUNFMEPyqpfFI78fu9YUXPRRVHIOH9xS5OLz035SSTH2Mc2Tzau+l7BA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="/socket.io/socket.io.js"></script>
+   <script src="scripts/front.js"></script>
+</body>
+</html>

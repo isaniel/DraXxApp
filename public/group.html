@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="front.css"> <!-- Link to your CSS file -->
+    <title>Draxap - Group Chat</title>
+</head>
+<body>
+    <div class="main">
+        <div class="name">
+            <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
+            <h1 id="username-display">Group Chat</h1>
+        </div>
+        <ul id="messages"></ul>
+        <div class="input">
+            <input type="text" class="msg" placeholder="Type your message..." id="messageInput">
+            <button class="btn" id="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script src="front.js"></script>
+
+    <script>
+        // WebSocket connection to the server
+        const ws = new WebSocket('ws://localhost:5000'); // Update with your WebSocket server URL
+        const messageBox = document.getElementById('messages');
+
+        // Event listener for when the connection opens
+        ws.onopen = function () {
+            console.log('WebSocket connection opened');
+            const roomName = 'exampleRoom'; // Specify the room name
+            ws.send(JSON.stringify({ type: 'joinRoom', room: roomName })); // Join the room
+        };
+
+        // Event listener for the button click
+        document.getElementById('sendBtn').addEventListener('click', function () {
+            const message = document.getElementById('messageInput').value;
+
+            // Check if the message is not empty
+            if (message.trim() !== "") {
+                ws.send(JSON.stringify({ type: 'message', content: message })); // Send the message
+                // Display the outgoing message
+                messageBox.innerHTML += `<p style="max-width: 80%; padding: 10px; border: none; border-radius: 50px 0 50px 50px; font-size: 18px; background-image: linear-gradient(to bottom, #03A9F4, #87CEEB); margin-bottom: 20px; float: right; clear: both;"> ${message}</p>`;
+                document.getElementById('messageInput').value = ''; // Clear the input box
+                messageBox.scrollTop = messageBox.scrollHeight; // Scroll to the bottom
+            }
+        });
+
+        // Receiving messages from the server
+        ws.onmessage = function (event) {
+            const messageData = JSON.parse(event.data); // Parse incoming data
+            if (messageData.type === 'message') {
+                const message = messageData.content; // Extract message content
+                // Display the incoming message
+                messageBox.innerHTML += `<p style="max-width: 80%; padding: 10px; border: none; background-image: linear-gradient(to bottom, #FFB2E6, #FFC0CB); font-size: 18px; border-radius: 0 50px 50px 50px; float: left; clear: both; margin-bottom: 20px;"> ${message}</p>`;
+                messageBox.scrollTop = messageBox.scrollHeight; // Scroll to the bottom
+            }
+        };
+
+        // WebSocket close event
+        ws.onclose = function () {
+            console.log('WebSocket connection closed');
+        };
+
+        // Back button functionality
+        document.querySelector('.back-btn').addEventListener('click', () => {
+            alert('Logging out');
+            window.location.href = 'login.html'; // Redirect to login page
+        });
+
+        // Display the username
+        const username = localStorage.getItem('username');
+        document.getElementById('username-display').innerText = `Group Chat - ${username}`;
+    </script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.main{
+    width: 100%;
+    background-image: linear-gradient( to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%),url(pics/demon.jpg);
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    color: #F0EDE5;
+}
+
+.navbar{
+    width: 100%;
+    max-width: 1200px;
+    height: 75px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.icon{
+    height: 70px;
+}
+
+.logo{
+    color: black;
+    font-size: 35px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+    height: 70px;
+    text-shadow: 1px black;
+}
+
+ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+ul li{
+    margin-left: 40px;
+    font-size: 14px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: #F0EDE5;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    transition: 0.4s;
+}
+
+ul li a:hover{
+    color: #E07A5F;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.srch{
+    width: 200px;
+    height: 20px;
+    background-color: transparent;
+    border: 1px solid #2c3f0b;
+    color: #ff7200;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+}
+
+.btn{
+    width: 100px;
+    height: 40px;
+    background: #3E2723;
+    border: 2px solid #3E2723;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 0 5px 5px 0;
+}
+
+.content{
+    max-width: 1200px;
+    margin: auto;
+    color: #F0EDE5;
+    text-align: center;
+}
+
+.content h1{
+    font-size: 50px;
+    margin-top: 9%;
+    letter-spacing: 2px;
+}
+
+.content .par{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 1.2px;
+    line-height: 30px;
+    margin: 20px 0;
+}
+
+.content .tn{
+    background: #fff;
+    border: 1px #fff solid;
+    padding: 12px 34px;
+    font-size: 18px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.85s ease;
+}
+
+.content .tn:hover{
+    background: #E07A5F;
+    border: black 1px;
+}
+
+.content .tn a{
+    text-decoration: none;
+    color: black;
+}
+
+.content span{
+    color: #3E2723;
+    font-size: 90px;
+}
+
+.form{
+    max-width: 350px;
+    background: rgba(0,0,0,0.8);
+    border-radius: 10px;
+    padding: 25px;
+    margin: 50px auto;
+    color: #F0EDE5;
+}
+
+.form h2{
+    font-family: 'Times New Roman', Times, serif;
+    color: #3E2723;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.form input{
+    width: 100%;
+    height: 35px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #3E2723;
+    color: azure;
+    font-size: 15px;
+    margin-top: 30px;
+}
+
+.form input:focus{
+    outline: none;
+    border-bottom-color: #E07A5F;
+}
+
+::placeholder{
+    color: #E07A5F;
+}
+
+.btnn{
+    width: 100%;
+    background: #3E2723;
+    font-size: 18px;
+    margin-top: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+    transition: 0.4s;
+}
+
+.btnn:hover{
+    background: #fff;
+    color: #E07A5F;
+}
+
+.link{
+    text-align: center;
+    font-size: 17px;
+    margin-top: 20px;
+}
+
+.link a{
+    text-decoration: none;
+    color: #556B2F;
+}
+
+.form .fa{
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    padding-top: 15px;
+    transition: 1s ease;
+}
+
+.form .fa:hover{
+    color: #3E2723;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    ul {
+        flex-direction: column;
+    }
+
+    ul li {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .search {
+        margin-top: 20px;
+    }
+
+    .content h1 {
+        font-size: 40px;
+    }
+
+    .content span {
+        font-size: 60px;
+    }
+
+    .form {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    ul {
+        align-items: flex-start;
+    }
+
+    .content h1 {
+        font-size: 30px;
+    }
+
+    .content span {
+        font-size: 50px;
+    }
+
+    .content .par {
+        font-size: 14px;
+    }
+
+    .form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .btnn {
+        font-size: 16px;
+    }
+}

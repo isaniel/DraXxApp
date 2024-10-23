@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DraXxap Login</title>
+    <link rel="stylesheet" href="styles/mystyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+   
+    
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">DraXxap</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">MENU</a></li>
+                    <li><a href="#">LATEST</a></li>
+                    <li><a href="#">DUBBED</a></li>
+                    <li class="ddds"><a href="#">LIVE  <i class="fa fa-circle"></i></a></li>
+                    <li><a href="#">ABOUT</a></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input class="srch" type="search" placeholder="Type To Text">
+                <a href="#"><button class="btn">Search</button></a>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Cartoons & Anime <br> <span>Stream</span><br> Website</h1>
+            <p class="par">“What are you so hesitant about? It’s your dream, isn’t it? It’s right in front of you, and you’re wavering? You gotta be reckless and take whatever tf you can!" —Tomoya Okazaki</p>
+            <button class="tn"><a href="#">JOIN</a></button>
+            <form class="form" id="mainForm">
+                <h2>Login</h2>
+                <input id="emailInput" class="email" name="email" type="email" placeholder="Enter a valid email" required>
+                <input id="passwordInput" class="password" type="password" placeholder="Passphrase" required>
+                <button class="btnn">Login</button>
+                <p class="link">Don't have an account<br>
+                <a href="signup.html">sign up </a> here</p>
+            </form>
+        </div>
+    </div>
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+    import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+
+// ...
+
+isSupported().then(isAnalyticsSupported => {
+  if (isAnalyticsSupported) {
+    const analytics = getAnalytics(app);
+    // Now you can use analytics
+  } else {
+    console.log('Analytics is not supported in this environment');
+  }
+}).catch(error => {
+  console.error('Error checking analytics support:', error);
+});
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAQ7gH1Uy--7C_6wXLUXcMflgc8JBRCZD8",
+            authDomain: "draxap02.firebaseapp.com",
+            projectId: "draxap02",
+            storageBucket: "draxap02.appspot.com",
+            messagingSenderId: "783320942949",
+            appId: "1:783320942949:web:0ee012e74b4db021dc398c",
+            measurementId: "G-202QYMYCLD"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        
+        const auth = getAuth();
+
+        const loginForm = document.getElementById('mainForm');
+        const emailInput = document.getElementById('emailInput');
+        const passwordInput = document.getElementById('passwordInput');
+
+
+
+        loginForm.addEventListener('submit', (e) => {
+     e.preventDefault();
+    const email = emailInput.value;
+    const password = passwordInput.value;
+
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log('User  signed in successfully!');
+            window.location.href = 'selection.html';
+        })
+        .catch((error) => {
+            // Error occurred
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(`Error occurred: ${errorCode} - ${errorMessage}`);
+            // Display an error message to the user
+            alert('Invalid email or password');
+        });
+});
+
+
+            </script>
+    </body>
+</html>

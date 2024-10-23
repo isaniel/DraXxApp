@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding and borders are included in element's total width and height */
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #666666 ; /* Set background color for the body */
+    
+}
+
+.main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color:  black;
+    border-radius: 10px;
+    border-style: solid 5px;
+    border-color: #FFC9DE;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 80px); /* Adjust height to account for margins */
+    overflow-y: auto;
+    position: relative fixed;
+    
+}
+
+.name {
+    background-color: #666666;
+    color: black;
+    padding: 10px;
+    border-radius: 10px; /* Rounded corners for the header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name h1 {
+    font-size: 24px;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    padding: 10px; /* Increased padding for better touch targets */
+    background-color: white;
+    position: fixed;
+    bottom: 0; /* Fixed to the bottom of the viewport */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    width: calc(50% - 40px); /* Full width minus margins */
+    background-color: #666666;
+}
+
+.input input[type="text"] {
+    flex-grow: 1; /* Allows input to grow and fill available space */
+    padding: 10px; /* Increased padding for better usability */
+    border-radius: 20px; /* More rounded corners */
+    border: 1px solid #ccc; /* Added border for better visibility */
+    
+}
+
+.input button {
+    color: black;
+    border-radius: 20px; /* More rounded corners */
+    border: none;
+    cursor: pointer;
+    padding: 10px; /* Increased padding for better touch targets */
+}
+
+#messages {
+    padding-top: 20px; /* Space above messages */
+    flex-grow: 1; /* Allows messages to take available space */
+    overflow-y: auto; /* Scrollable area for messages */
+}
+
+#messages li {
+   list-style-type: none; /* Remove default list styling */
+   margin-bottom: 10px; /* Space between messages */
+}
+
+.msg {
+   border-radius: 20px; /* Rounded message bubbles */
+   padding: 10px; 
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 768px) {
+   .main {
+       max-width: calc(100% - 40px); /* Responsive width adjustment */
+   }
+
+   .input {
+       flex-direction: flex; /* Stack input and button vertically on smaller screens */
+   }
+
+   .input button {
+       width: 50%; /* Full width button on small screens */
+   }
+}
+
+@media (max-width: 480px) {
+   .input input[type="text"] {
+       width: calc(100% - 20px); /* Full width input on very small screens */
+   }
+
+   .input button {
+       padding: 12px; /* Larger button padding on small screens */
+   }
+}
+/* Style for sent messages (your current style) */
+.message.sent {
+    max-width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 50px 0 50px 50px;
+    font-size: 18px;
+    background-image: linear-gradient(to bottom, #03A9F4, #87CEEB);
+    margin-bottom: 20px;
+    float: right; /* Float sent messages to the right */
+    clear: both; 
+    display: block;
+    word-wrap: break-word;
+}
+
+/* Style for received messages */
+.message.received {
+    max-width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 0 50px 50px 50px; /* Inverse border-radius */
+    font-size: 18px;
+    background-image: linear-gradient(to bottom, #FFB2E6, #FFC0CB);
+    color: #333; /* Dark text color for readability */
+    margin-bottom: 20px;
+    float: left; /* Float received messages to the left */
+    clear: both;
+    display: block;
+    word-wrap: break-word;
+}
+
+/* Optional: Chat container styling */
+.chat-messages {
+    overflow-y: auto;
+    padding: 10px;
+    height: 500px; /* Adjust height as needed */
+}

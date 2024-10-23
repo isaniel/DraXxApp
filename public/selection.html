@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Chat Room</title>
+    <link rel="stylesheet" href="styles/selection.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Join a Chat Room</h1>
+        
+        <!-- Username input field -->
+        <div>
+            <label for="username">Enter Username:</label>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+        </div>
+
+        <!-- Room selection dropdown -->
+        <div style="margin-top: 20px;">
+            <label for="roomId">Input Generated Room:</label>
+            <input type="text" id="roomId">
+        </div>
+        <div class="id" id="roomIDDisplay"> </div>
+
+
+        <!-- Join Room button -->
+        <div style="margin-top: 20px;">
+            <button id="SingleChatButton">generate room</button>
+            <button id="joinRoomButton">Join Room</button>
+            
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('joinRoomButton').onclick = function() {
+            const username = document.getElementById('username').value;
+            const selectedRoom = document.getElementById('roomId').value;
+
+
+            if (username.trim() === '') {
+                alert('Please enter a username.');
+                return;
+            }   window.location.href = `front.html?username=${username}&room=${selectedRoom}`; // Update this to "group.html" if needed
+        };
+        document.getElementById('SingleChatButton').addEventListener('click', function() {
+    // Generate a random room ID
+    const roomID = generateRoomID();
+    
+    // Display the room ID
+    document.getElementById('roomIDDisplay').textContent = `Room ID: ${roomID}`;
+});
+
+// Function to generate a random room ID
+function generateRoomID() {
+    // You can customize the room ID generation logic as needed
+    return Math.random().toString(36).substring(2, 10); // generates a random string
+}
+    </script>
+</body>
+</html>
